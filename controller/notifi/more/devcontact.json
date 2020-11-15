@@ -1,0 +1,30 @@
+{
+    "people":[{
+        "name": "Kushal",
+        "email": "yanishguru@gmail.com",
+        "secondaryEmail":"kushalg@bostechusa.com",
+        "phone": "+14073414690"
+    },
+    {
+        "name": "John",
+        "email": "jlepak@bostechusa.com",
+        "secondaryEmail":"jlepak@bostechusa.com",
+        "phone": "+14074273832"
+    },
+    {
+        "name": "Admin",
+        "email": "admin@bostechusa.com",
+        "secondaryEmail": null,
+        "phone": "+14074273832"
+    },
+    {
+        "name": "Support",
+        "email": "support@bostechusa.com",
+        "secondaryEmail": null,
+        "phone": "+14074273832"
+    }
+
+]
+
+
+}

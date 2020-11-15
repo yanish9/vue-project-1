@@ -1,0 +1,24 @@
+{
+  "development": {
+      "username": "hungrme_",
+      "password": "Hungrme7891",
+      "database": "hungrme_db",
+      "host": "hungrmedb-v1.ccw21h1mi9ce.us-east-2.rds.amazonaws.com",
+      "dialect": "mysql"
+      
+  },
+  "test": {
+    "username": "admin",
+    "password": "Hungryus@mubeus789",
+    "database": "hungrme",
+    "host": "srv1.hungrme.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "Hungryus@mubeus789",
+    "database": "hungrme",
+    "host": "srv1.hungrme.com",
+    "dialect": "mysql"
+  }
+}

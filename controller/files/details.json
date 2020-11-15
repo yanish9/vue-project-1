@@ -1,0 +1,55 @@
+[
+    {
+    "id":0,
+    "name":"Armathan",
+    "size":5,
+    "price":400,
+    "img":["",""],
+    "thumb":"",
+    "info":{
+        "Motors":"T-Motors",
+        "Esc":"Tekko Kakute",
+        "Flight Controller":"Kakute F7. (Includes cables)",
+        "Frame":"Armathan frame",
+        "Props":"Good props1",
+        "Camera" : "RunCam Pro ",
+        "Flight Controller1":"Kakute F7. (Includes cables)",
+        "Frame2":"Armathan frame",
+        "Prop3s":"Good props1",
+        "Camera345" : "RunCam Pro "
+        }
+    },
+
+    {
+    "id":1,
+    "name":"Armathan Ninja",
+    "size":5,
+    "price":500,
+    "img":["",""],
+    "thumb":"",
+    "info":{
+        "Motors":"Ninja Motors",
+        "Esc":"Tekko Kakute",
+        "Flight Controller":"Kakute F7",
+        "Frame":"Armathan frame",
+        "Props":"Good props"
+        }
+    },
+
+    {
+    "id":2,
+    "name":"Armathan Ninja",
+    "size":5,
+    "price":500,
+    "img":["",""],
+    "thumb":"",
+    "info":{
+        "Motors":"Ninja Motors",
+        "Esc":"Tekko Kakute",
+        "Flight Controller":"Kakute F7",
+        "Frame":"Armathan frame",
+        "Props":"Good props"
+        }
+    }
+
+]

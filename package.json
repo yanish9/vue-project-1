@@ -1,0 +1,48 @@
+{
+  "name": "hungrme",
+  "version": "1.0.0",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hungrme/hungrme-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bostechusa/medi-iot/issues"
+  },
+  "homepage": "https://github.com/bostechusa/medi-iot#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "express-session": "^1.16.2",
+    "helmet": "^3.18.0",
+    "http-proxy": "^1.17.0",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.2.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.11.0",
+    "request": "^2.88.2",
+    "sequelize": "^5.10.0",
+    "sequelize-cli": "^5.5.0",
+    "twilio": "^3.39.2",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {},
+  "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
+  "main": "server.js"
+}
