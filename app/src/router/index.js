@@ -3,6 +3,12 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
 import Login from '../views/login/login.vue'
+
+
+import Signup from '../views/signup/signup.vue'
+
+import Dashboard from '../views/dashboard/dashboard.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,9 +21,13 @@ const routes = [
     name: 'Login',
     component: Login
   }, {
-    path: '/',
-    name: 'mynotes',
-    component: Home
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
+  }, {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/settings',
@@ -26,11 +36,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  },
+  { path: '*', redirect: '/' },
 ]
 
 const router = new VueRouter({
-  routes
-})
+  mode: 'history',
+  routes,
+}
+)
 
 export default router

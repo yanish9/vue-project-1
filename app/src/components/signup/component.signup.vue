@@ -1,21 +1,28 @@
 <template>
   <div class="login">
-   <h2>Login</h2>
+   <h2>Sign Up</h2>
    
    <div class="login-form-container">
    
    <input id="email_add" placeholder="Email-Address">
    <input id="password" placeholder="Password">
+   <input id="repeat-password" placeholder="Repeat Password">
    
-   <button> Sign In</button>
-   
+   <button>Sign Up</button>
+
+   <div class="signup_alternatives">
+         <button>Google</button>
+         <button>Facebook</button>
+         <button>Twitter</button>
+   </div>
+
    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Signup',
   props: {
     msg: String
   }
