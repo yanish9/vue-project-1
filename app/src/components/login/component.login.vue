@@ -1,23 +1,19 @@
 <template>
   <div class="login">
-   <h2>Sign Up</h2>
+   <h2>Login</h2>
    
    <div class="login-form-container">
-   <form  @submit.prevent="signup_"> 
+   
+   <form  @submit.prevent="login"> 
    <input id="email_add" placeholder="Email-Address">
    <input id="password" placeholder="Password">
-   <input id="repeat-password" placeholder="Repeat Password">
-  
-  <input type="submit" value="signup" />    
+
    
+  <input type="submit" value="Sign In" />    
    </form>
-
-   <div class="signup_alternatives">
-         <button>Google</button>
-         <button>Facebook</button>
-         <button>Twitter</button>
-   </div>
-
+   
+   
+   
    </div>
   </div>
 </template>
@@ -26,43 +22,41 @@
 
 import axios from "axios"; 
 import router from "../../router" 
+
 export default {
-  name: 'Signup',   
+  name: 'Login',   
         methods: {    
-            signup_: (e) => {    
-                e.preventDefault()        
+            login: (e) => {    
+                 e.preventDefault()        
                 let config = {
                               headers: {
-                                'content-type': 'application/json' 
+                                'content-type': 'application/json' ,
+                                'Access-Control-Allow-Origin': '*'
                               }
-                            };    
-                let username = "test"
+                            };     
                 let email = "user@email.com"   
                 let password = "passwordmko"    
-                let signup_ = () => {    
+
+                let login = () => {    
                     let data = {    
-                        username: username,
-                        email_address: email,    
+                        email: email,    
                         password: password    
                     }    
-                    axios.post("/api/signup", data, config)
+                    axios.post("/api/login", data, config)    
                         .then((response) => {    
-                          if (response.success == 1){
                             console.log("Logged in")    
-                            router.push("/dashboard") }
-                            else   {
-                              console.log("Error signup :", response.data.message); 
-                            } 
+                            console.log(response)
+                            router.push("/dashboard")    
                         })    
                         .catch((errors) => {    
-                            console.log("Cannot log in")    
-                            console.log(errors)    
+                            console.log(errors)
 
+                            console.log("Cannot log in")    
                         })    
                 }    
-                signup_()    
+                login()    
             }    
-        },      
+        },
   props: {
     msg: String
   }

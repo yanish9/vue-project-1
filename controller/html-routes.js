@@ -19,8 +19,10 @@ var db = require('../models');
 
 // Each of the below routes just handles the HTML page that the user gets sent to.
 
+
+
 router.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/../public/index.html'));
+  res.sendFile(path.join(__dirname + '/../app/dist/index.html'));
 });
 
 router.get('/dashboard', function(req, res) {

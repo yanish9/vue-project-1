@@ -20,15 +20,15 @@ var app = express();
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
 //app.enable('trust proxy');
 
-app.use(express.static(process.cwd() + '/public'));
+app.use(express.static(process.cwd() + '/app/dist/'));
 
-console.log(process.cwd() + '/public');
+console.log(process.cwd() + '/app/dist/');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -40,6 +40,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(helmet());
+app.use(bodyParser.json())
+app.route('/*')
+    .get(function(req, res) {
+          res.sendFile(path.join(__dirname + '/app/dist/index.html'));
+});
 
 // Import routes and give the server access to them.
 var routes = require('./controller/apiController.js');

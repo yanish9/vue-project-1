@@ -119,7 +119,7 @@ router.post('/api/login', passport.authenticate('local'), function(req, res) {
   // So we're sending the user back the route to the members page because the redirect will happen on the front end
   // They won't get this or even be able to access this page if they aren't authed
 
-  res.json({ message: 1 , token:"9876987"});
+  res.json({ success: 1 , token:"9876987"});
 });
 
 router.post('/api/signup', limiterCritical, function(req, res) {
@@ -132,7 +132,7 @@ router.post('/api/signup', limiterCritical, function(req, res) {
     }
   }).then(function(data) {
     console.log("checking email if exist");
-    console.log();
+    console.log(data);
 
     if (data) {
       return res.json({
@@ -162,20 +162,20 @@ router.post('/api/signup', limiterCritical, function(req, res) {
 //     group_id: 1,
 //     createdat: "2019-08-11 23:49:19"
 // })
-
+console.log("create-------------------------------------------------")
     db.User.create({
       username: req.body.username,
       // first_name: req.body.first_name,
       // last_name: req.body.last_name,
       email_address: req.body.email_address,
-      password: req.body.password
+      passwrd: req.body.password
     })
       .then(function() {
         console.log("done-------------------------------------------------")
         res.redirect(307, '/api/login');
       })
       .catch(function(err) {
-        res.json(err);
+        res.json({"message":err});
       });
   });
 });

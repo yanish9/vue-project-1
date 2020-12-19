@@ -13,18 +13,13 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        password: {
+        passwrd: {
             type: DataTypes.STRING,
             allowNull: false,
 
         },
-        first_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+        temp_token: {
+            type: DataTypes.STRING
         },
         email_address: {
             type: DataTypes.STRING,
@@ -59,26 +54,26 @@ module.exports = function(sequelize, DataTypes) {
         // The user can be compared to the hashed password stored in our database
 
         // schema: 'hungrme_db',
-        tableName: 'user',
+        tableName: 'users',
         timestamps:false,
         // Hooks are automatic methods that run during various phases of the Member Model lifecycle
         // In this case, before a Member is created, we will automatically hash their password
         hooks: {
             beforeCreate: function(user, options, cb) {  
-                console.log("im creating a user", user.dataValues);  
-                user.dataValues.password = bcrypt.hashSync(user.dataValues.password, bcrypt.genSaltSync(10), null);  
+                console.log("im creating a user", user.dataValues.passwrd);  
+                user.dataValues.passwrd = bcrypt.hashSync(user.dataValues.passwrd, bcrypt.genSaltSync(10), null);  
                 console.log("im creating a user", user);  
                 //cb(null, options);  
             }, 
             beforeUpdate: function(user) {
                 console.log("im updating a user");
-                user.dataValues.password = bcrypt.hashSync(user.dataValues.password, bcrypt.genSaltSync(10), null);
+                user.dataValues.passwrd = bcrypt.hashSync(user.dataValues.passwrd, bcrypt.genSaltSync(10), null);
             }
         }
     });
 
     User.prototype.validPassword = function(password) {
-        let hashed = this.password;
+        let hashed = this.passwrd;
         if (hashed.substring(0, 7) == 'bcrypt$'){
             hashed = hashed.substring(7, hashed.length);
         }

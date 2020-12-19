@@ -2,9 +2,9 @@
   "development": {
       "username": "hungrme_",
       "password": "Hungrme7891",
-      "database": "hungrme_db",
-      "host": "hungrmedb-v1.ccw21h1mi9ce.us-east-2.rds.amazonaws.com",
-      "dialect": "mysql"
+      "database": "notes",
+      "host": "hungrmedb.ccw21h1mi9ce.us-east-2.rds.amazonaws.com",
+      "dialect": "postgres"
       
   },
   "test": {
