@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var session = require('express-session');
 var db = require('./models');
-
+var cors = require('cors')
 var isAuthenticated = require('./config/middleware/isAuthenticated');
 const fs = require('fs');
 var passport = require('./config/passport');
@@ -17,12 +17,12 @@ var PORT = process.env.PORT ? process.env.PORT : 9000;
 var PROXY = process.env.PROXY ? process.env.PROXY : 8000;
 
 var app = express();
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors({origin: true}));
+// app.use(function(req, res, next) {
+//   // res.header("Access-Control-Allow-Origin", "*");
+//   // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 //app.enable('trust proxy');
 
@@ -52,22 +52,15 @@ var routeshtml = require('./controller/html-routes.js');
 
 var routesAdmin = require('./controller/adminController.js');
 
-var routesRecipe = require('./controller/recipe-api.js');
-
 app.use('/', routes);
 app.use('/', routeshtml);
 app.use('/', routesAdmin);
-app.use('/', routesRecipe);
 
 console.log('starting');
-
-var notifiServiceTimer;
+ 
 
 var regex_ = new RegExp(/^[a-zA-Z]+(\d?)+[_]+([T])+\d+[_]+([D])+\d+$/);
-
-var regex_tank = new RegExp(/^([t])+([s])\d+$/);
-
-//notifiService();
+  
 
 app
 .listen(PORT, () => {

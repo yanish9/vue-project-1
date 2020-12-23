@@ -4,7 +4,7 @@
    
    <div class="login-form-container">
    
-   <form  @submit.prevent="login"> 
+   <form  @submit.prevent="login_"> 
    <input id="email_add" placeholder="Email-Address">
    <input id="password" placeholder="Password">
 
@@ -24,37 +24,43 @@ import axios from "axios";
 import router from "../../router" 
 
 export default {
-  name: 'Login',   
+ name: 'Login',  
+  mounted:function(){
+  console.log(this.$route.query.from)   //method1 will execute at pageload
+  },  
         methods: {    
-            login: (e) => {    
-                 e.preventDefault()        
+            login_: (e) => {    
+                e.preventDefault()        
                 let config = {
                               headers: {
-                                'content-type': 'application/json' ,
-                                'Access-Control-Allow-Origin': '*'
+                                'content-type': 'application/json' 
                               }
-                            };     
+                            };    
                 let email = "user@email.com"   
                 let password = "passwordmko"    
-
-                let login = () => {    
+                let login_ = () => {    
                     let data = {    
-                        email: email,    
+                        email_address: email,    
                         password: password    
                     }    
-                    axios.post("/api/login", data, config)    
+                    axios.post("/api/login", data, config)
                         .then((response) => {    
+                          
+                            console.log(response.data)   
+                          if (response.data.success == 1){
                             console.log("Logged in")    
-                            console.log(response)
-                            router.push("/dashboard")    
+                            router.push("/dashboard") }
+                            else   {
+                              console.log("Error login :", response.data.message); 
+                            } 
                         })    
                         .catch((errors) => {    
-                            console.log(errors)
-
                             console.log("Cannot log in")    
+                            console.log(errors)    
+
                         })    
                 }    
-                login()    
+                login_()    
             }    
         },
   props: {

@@ -2,13 +2,15 @@
   <div class="login">
    <h2>Sign Up</h2>
    
-   <div class="login-form-container">
-   <form  @submit.prevent="signup_"> 
-   <input id="email_add" placeholder="Email-Address">
-   <input id="password" placeholder="Password">
-   <input id="repeat-password" placeholder="Repeat Password">
+   <div class="signup_">
+     
+   <form @submit.prevent="signup_"  > 
+   <input value="mko" id="username" placeholder="Username" name="sign_up_username">
+   <input value="ops@bstech.io"  id="email_add" placeholder="Email-Address" name="sign_up_email">
+   <input   value="ops@.io" id="password" placeholder="Password" name="sign_up_pwd">
+   <input   value="ops@.io" id="repeat-password" placeholder="Repeat Password" name="sign_up_rep_pwd">
   
-  <input type="submit" value="signup" />    
+  <input type="submit" value="signup"/>    
    
    </form>
 
@@ -27,18 +29,27 @@
 import axios from "axios"; 
 import router from "../../router" 
 export default {
-  name: 'Signup',   
+  name: 'Signup',
         methods: {    
-            signup_: (e) => {    
-                e.preventDefault()        
+            signup_: (e) => {         
+               e.preventDefault()        
                 let config = {
                               headers: {
                                 'content-type': 'application/json' 
                               }
                             };    
-                let username = "test"
-                let email = "user@email.com"   
-                let password = "passwordmko"    
+                console.log(e)
+
+                let username =  e.target.elements.sign_up_username.value
+                let email =  e.target.elements.sign_up_email.value
+                let password = e.target.elements.sign_up_pwd.value
+                let rep_password = e.target.elements.sign_up_rep_pwd.value
+                if (password != rep_password){
+                  console.log("password do not match")
+                  return;
+                }
+
+
                 let signup_ = () => {    
                     let data = {    
                         username: username,
@@ -47,15 +58,16 @@ export default {
                     }    
                     axios.post("/api/signup", data, config)
                         .then((response) => {    
-                          if (response.success == 1){
-                            console.log("Logged in")    
-                            router.push("/dashboard") }
+                          if (response.data.success == 1){
+                            console.log("Signed up")    
+                            router.push("/login?from=su") 
+                            }
                             else   {
                               console.log("Error signup :", response.data.message); 
                             } 
                         })    
                         .catch((errors) => {    
-                            console.log("Cannot log in")    
+                            console.log("Cannot sign up ")    
                             console.log(errors)    
 
                         })    

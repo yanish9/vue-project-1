@@ -73,6 +73,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.prototype.validPassword = function(password) {
+        console.log('validate pwd')
         let hashed = this.passwrd;
         if (hashed.substring(0, 7) == 'bcrypt$'){
             hashed = hashed.substring(7, hashed.length);

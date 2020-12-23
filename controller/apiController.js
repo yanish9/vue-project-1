@@ -87,6 +87,7 @@ router.post('/api/authenticate', (req, res) => {
 
   const credentials = auth(req);
 
+  console.log("auth", credentials)
   if (!credentials) {
 
     res.status(400).json({ message: 'Invalid Request !' });
