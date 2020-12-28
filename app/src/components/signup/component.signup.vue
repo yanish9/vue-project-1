@@ -31,7 +31,7 @@ import router from "../../router"
 export default {
   name: 'Signup',
         methods: {    
-            signup_: (e) => {         
+            signup_: (e) => {          
                e.preventDefault()        
                 let config = {
                               headers: {

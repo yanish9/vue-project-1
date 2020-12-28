@@ -12,7 +12,8 @@
 export default {
   name: 'DashboardTopSidebar',
   props: {
-    msg: String
+    msg: String,
+    
   }
 }
 </script>
