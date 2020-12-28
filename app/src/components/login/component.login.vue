@@ -3,10 +3,12 @@
    <h2>Login</h2>
    
    <div class="login-form-container">
-   
+   <notifications position="top center" group="foo" />
+
    <form  @submit.prevent="login_"> 
-   <input id="email_add" placeholder="Email-Address">
-   <input id="password" placeholder="Password">
+     
+   <input id="email_add" placeholder="Email-Address" name="sign_in_email">
+   <input id="password" placeholder="Password" name="sign_in_password">
 
    
   <input type="submit" value="Sign In" />    
@@ -22,10 +24,22 @@
 
 import axios from "axios"; 
 import router from "../../router" 
+import Vue from 'vue'
 
 export default {
  name: 'Login',  
+//  data  : {
+//    'from' : 0
+//  },
   mounted:function(){
+    if (this.$route.query.from == 'su'){
+        Vue.notify({
+          group: 'foo',
+          title: 'Sign up complete',
+          text: 'You can now sign in using your credentials'
+        })
+
+    }
   console.log(this.$route.query.from)   //method1 will execute at pageload
   },  
         methods: {    
@@ -36,8 +50,8 @@ export default {
                                 'content-type': 'application/json' 
                               }
                             };    
-                let email = "user@email.com"   
-                let password = "passwordmko"    
+                let email = e.target.elements.sign_in_email.value 
+                let password = e.target.elements.sign_in_password.value 
                 let login_ = () => {    
                     let data = {    
                         email_address: email,    

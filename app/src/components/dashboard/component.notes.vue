@@ -1,5 +1,7 @@
 <template>
   <div class="note">
+   <input @click="showModal = true" type="checkbox" :note-id="note_id" v-model="checkedNotes" v-on:click="checkNote">
+    <!-- <input type="checkbox" value="bar" v-model="checkedNotes" v-on:click="checkNote"> -->
    <h2>{{note}}</h2>
   </div>
 </template>
@@ -7,10 +9,21 @@
 <script>
 export default {
   name: 'Note',
+    data() {
+      return { checkedNotes: ['bar'] }
+    },
   props: {
-    note: String
+    note: String,
+    note_id: String
+  },
+  methods: {    
+            checkNote: function (e) { 
+                console.log(this.checkedVals,e);
+                   }
+       
+       }
+   
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
